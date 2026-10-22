@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="article.title">Intelligence in the Wild — AllSpark Research</title>
+  <link rel="stylesheet" href="style.css?v=1787644916116" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1787295424726" />
+  <style>
+    .article-hero {
+      padding-top: var(--nav-h);
+      position: relative;
+      overflow: hidden;
+    }
+    .article-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .article-hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 60px;
+      align-items: end;
+    }
+    .article-breadcrumb {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    .article-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .article-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .meta-sep { opacity: 0.3; }
+    .article-title {
+      font-size: clamp(36px, 4.5vw, 56px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .article-subtitle {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 560px;
+    }
+    .article-hero-viz {
+      position: relative;
+      height: 260px;
+    }
+    .article-layout {
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: 0 48px 80px;
+      display: grid;
+      grid-template-columns: var(--content-w) 260px;
+      gap: 80px;
+    }
+    .article-body {
+      max-width: var(--content-w);
+    }
+    .article-section {
+      margin-bottom: 56px;
+    }
+    .abstract-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .abstract-text {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      border-left: 2px solid var(--accent);
+      padding-left: 24px;
+    }
+    .article-h2 {
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+    .article-p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .pullquote {
+      margin: 40px 0;
+      padding: 32px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      position: relative;
+    }
+    .pullquote::before {
+      content: '"';
+      position: absolute;
+      top: -8px;
+      left: 24px;
+      font-size: 48px;
+      color: var(--accent);
+      opacity: 0.5;
+      line-height: 1;
+    }
+    .pullquote p {
+      font-size: 18px;
+      color: var(--text-primary);
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+    .pullquote cite {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: normal;
+    }
+    .callout {
+      margin: 32px 0;
+      padding: 24px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+    }
+    .callout-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .callout-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    .figure {
+      margin: 40px 0;
+    }
+    .figure-inner {
+      height: 240px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 13px;
+      overflow: hidden;
+    }
+    .figure-caption {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-top: 12px;
+    }
+    .toc-sidebar {
+      position: sticky;
+      top: calc(var(--nav-h) + 40px);
+      align-self: start;
+      padding-left: 32px;
+      border-left: 1px solid var(--border-color);
+    }
+    .toc-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .toc-item a {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: block;
+      padding: 6px 0 6px 12px;
+      border-left: 2px solid transparent;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .toc-item a:hover,
+    .toc-item.active a {
+      color: var(--text-primary);
+      border-left-color: var(--accent);
+    }
+    .toc-divider {
+      border: none;
+      border-top: 1px solid var(--border-color);
+      margin: 20px 0;
+    }
+    .toc-section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .cite-text {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .cite-text em { color: var(--accent); font-style: normal; }
+    .cite-link {
+      font-size: 12px;
+      color: var(--accent);
+      cursor: pointer;
+    }
+    .dl-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .dl-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 8px 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+    .dl-item:hover { border-color: var(--accent); }
+    .text-dim { color: var(--text-muted); }
+    .related-section {
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+    @media (max-width: 1024px) {
+      .article-hero-inner { grid-template-columns: 1fr; }
+      .article-layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .article-hero-inner { padding: 60px 24px; }
+      .article-layout { padding: 0 24px 60px; }
+      .related-section { padding: 0 24px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ─────────────────────────────────────── -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <span class="brand-logo nav-logo-svg"></span>
+    <span class="brand-wordmark"></span>
+    <span class="brand-suffix">Research</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="field-notes.html" class="active" data-i18n="nav.blog">Blog</a></li>
+    <li><a href="publications.html" data-i18n="nav.publications">Publications</a></li>
+    <li><a href="about.html#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="theme-toggle">Light</button>
+    <div class="nav-lang" id="lang-toggle"><span class="en active">EN</span> / <span class="zh">中文</span></div>
+    <button class="btn-primary" style="padding: 8px 18px; font-size: 13px;" data-i18n="nav.subscribe">Subscribe</button>
+  </div>
+</nav>
+
+<!-- ── Article Hero ───────────────────────────────────── -->
+<div class="article-hero">
+  <div class="article-hero-bg">
+    <canvas id="constellation-canvas" data-constellation-viz></canvas>
+  </div>
+  <div class="article-hero-inner">
+    <div>
+      <div class="article-breadcrumb" data-i18n="article.breadcrumb">Research Journal</div>
+
+      <div class="article-meta-row">
+        <div class="article-type-badge">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;flex-shrink:0;"></span>
+          <span data-i18n="article.meta.type">Manifesto</span>
+        </div>
+        <span class="meta-sep">|</span>
+        <span>AS-RJ-2026-001</span>
+        <span class="meta-sep">|</span>
+        <span data-i18n="article.meta.date">June 12, 2026</span>
+        <span class="meta-sep">|</span>
+        <span style="display:inline-flex;align-items:center;gap:4px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span data-i18n="article.meta.readtime">28 min read</span>
+        </span>
+      </div>
+
+      <h1 class="article-title" data-i18n="article.hero.title">Intelligence in the Wild</h1>
+      <p class="article-subtitle" data-i18n="article.hero.subtitle">How AllSpark studies foundation models and agents through real-world interactions.</p>
+    </div>
+
+    <div class="article-hero-viz">
+      <canvas data-constellation-viz style="width:100%;height:100%;"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ── Article Content ────────────────────────────────── -->
+<div class="article-layout">
+
+  <article class="article-body">
+
+    <!-- Abstract -->
+    <div class="article-section" id="abstract">
+      <div class="abstract-label" data-i18n="article.abstract.label">Abstract</div>
+      <p class="abstract-text" data-i18n="article.abstract.text">
+        AllSpark Research studies intelligence as it unfolds beyond the lab — where models and agents
+        perceive, decide, act, and adapt in open environments. We introduce the
+        Field–Instrument–Loop framework for studying real-world interactions, the instrument stack
+        we use to observe and measure behavior, and the feedback loops that drive model evolution.
+        This manifesto sets the agenda for a research program grounded in reality, oriented toward
+        utility, and accountable by design.
+      </p>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="article-section" id="why-wild">
+      <h2 class="article-h2" data-i18n="article.s1.title">Why we study intelligence in the wild</h2>
+      <p class="article-p" data-i18n="article.s1.p1">
+        Benchmarks tell us what models can do. The wild shows us what they actually do.
+      </p>
+      <p class="article-p" data-i18n="article.s1.p2">
+        In the wild, goals are ambiguous, contexts shift, tools are imperfect, and consequences matter.
+        It is here that capabilities compound — or collapse. By embedding models and agents in real-world
+        loops, we move from static evaluation to continuous discovery.
+      </p>
+
+      <blockquote class="pullquote">
+        <p data-i18n="article.s1.quote">"Intelligence is not defined in a vacuum. It is observed, tested, and evolved in the wild."</p>
+        <cite data-i18n="article.s1.cite">AllSpark Research</cite>
+      </blockquote>
+
+      <p class="article-p" data-i18n="article.s1.p3">
+        A model that scores 92% on a reasoning benchmark may fail systematically on real community
+        moderation tasks. The failure mode is not random — it follows patterns. Those patterns are
+        research problems. We formulate them, instrument them, and feed them back into training.
+      </p>
+    </div>
+
+    <!-- Section 2: Field -->
+    <div class="article-section" id="field">
+      <h2 class="article-h2" data-i18n="article.s2.title">Field</h2>
+      <p class="article-p" data-i18n="article.s2.p1">
+        The field is the real world where agents operate — messy, partial, and dynamic. We engage
+        with diverse domains and tasks, capturing rich distributions of contexts, constraints, and outcomes.
+      </p>
+
+      <div class="callout">
+        <div class="callout-label" data-i18n="article.s2.callout.label">Observation</div>
+        <p class="callout-text" data-i18n="article.s2.callout.text">
+          We observed three recurring failure modes in long-horizon tool-use tasks: context
+          loss after tool boundaries, goal drift under partial observability, and silent
+          failure when tool outputs are ambiguous. These were not edge cases — they were
+          the median behavior.
+        </p>
+      </div>
+
+      <p class="article-p" data-i18n="article.s2.p2">
+        The real community interaction data at Xiaohongshu is a field in this sense: hundreds of
+        millions of user–content interactions, each carrying an implicit signal about what the model
+        got right and what it missed. We do not treat this as a corpus. We treat it as a scientific
+        instrument — one that reveals capability gaps that controlled environments cannot surface.
+      </p>
+
+      <div class="figure">
+        <div class="figure-inner">
+          <canvas data-constellation-viz style="width:100%;height:100%;opacity:0.3;"></canvas>
+        </div>
+        <p class="figure-caption" data-i18n="article.s2.fig1">
+          <strong>Figure 1.</strong> The field as a high-dimensional space of contexts and tasks.
+          Red points indicate failure cases discovered through field observation that were absent from
+          pre-deployment benchmarks. Caption: sampling from real interaction distributions reveals
+          qualitatively different failure modes than synthetic evaluation sets.
+        </p>
+      </div>
+
+      <p class="article-p">
+        <a href="research.html" style="color:var(--accent);font-size:14px;" data-i18n="article.s2.link">Learn more about our Field environments →</a>
+      </p>
+    </div>
+
+    <!-- Section 3: Instrument -->
+    <div class="article-section" id="instrument">
+      <h2 class="article-h2" data-i18n="article.s3.title">Instrument</h2>
+      <p class="article-p" data-i18n="article.s3.p1">
+        Instruments are how we observe and measure. Our stack captures perception, reasoning traces,
+        actions, tool use, and outcomes — with time alignment and provenance.
+      </p>
+
+      <p class="article-p" data-i18n="article.s3.p2">
+        Harness, Benchmark, Rubric, and LLM Judge are not auxiliary tools. They are the scientific
+        instruments that make model behavior observable, comparable, and reproducible. Without precise
+        instruments, we cannot distinguish genuine capability from benchmark overfitting.
+      </p>
+
+      <div class="callout">
+        <div class="callout-label" data-i18n="article.s3.callout.label">Design Principle</div>
+        <p class="callout-text" data-i18n="article.s3.callout.text">
+          Evaluation rubrics should be executable, not descriptive. A rubric that cannot be
+          implemented as a deterministic scoring procedure is not a rubric — it is a preference.
+          We insist on rubrics that could, in principle, be run by a harness.
+        </p>
+      </div>
+
+      <div class="figure">
+        <div class="figure-inner">
+          <canvas data-constellation-viz style="width:100%;height:100%;opacity:0.3;"></canvas>
+        </div>
+        <p class="figure-caption" data-i18n="article.s3.fig2">
+          <strong>Figure 2.</strong> The instrument stack from observation to analysis.
+          Each stage introduces structured provenance: what was observed, how it was recorded,
+          which rubric was applied, where the result was stored, and how it was aggregated.
+        </p>
+      </div>
+
+      <p class="article-p" data-i18n="article.s3.p3">
+        Our current evaluation infrastructure includes over 40 task-specific harnesses, a shared
+        rubric library with 200+ reusable criteria, and an LLM Judge calibration protocol that we
+        validate against human raters on a monthly cycle.
+      </p>
+
+      <p class="article-p">
+        <a href="research.html" style="color:var(--accent);font-size:14px;" data-i18n="article.s3.link">See the instrument stack →</a>
+      </p>
+    </div>
+
+    <!-- Section 4: Loop -->
+    <div class="article-section" id="loop">
+      <h2 class="article-h2" data-i18n="article.s4.title">Loop</h2>
+      <p class="article-p" data-i18n="article.s4.p1">
+        The loop closes the cycle: insights become hypotheses, hypotheses become experiments, and
+        results feed model and system updates. Models are not static release artifacts — they are
+        participants in a continuous, field-grounded improvement process.
+      </p>
+
+      <div class="figure">
+        <div class="figure-inner">
+          <canvas data-constellation-viz style="width:100%;height:100%;opacity:0.3;"></canvas>
+        </div>
+        <p class="figure-caption" data-i18n="article.s4.fig3">
+          <strong>Figure 3.</strong> The feedback loop from deployment back to training.
+          Red dot indicates the signal injection point where field observations re-enter the
+          training pipeline as structured feedback. The cycle operates on a weekly cadence.
+        </p>
+      </div>
+
+      <p class="article-p" data-i18n="article.s4.p2">
+        Agent trajectories from field deployment are not discarded after serving. They are
+        reviewed, annotated, and filtered for training utility. A trajectory that demonstrates
+        successful reasoning under novel constraints is more valuable than a synthetic demonstration —
+        it carries real-world validity that cannot be easily replicated.
+      </p>
+
+      <blockquote class="pullquote">
+        <p data-i18n="article.s4.quote">"The loop is not a pipeline. It is a scientific posture — a commitment to closing
+        the distance between what we know in the lab and what happens in the world."</p>
+        <cite data-i18n="article.s4.cite">AllSpark Research</cite>
+      </blockquote>
+    </div>
+
+    <!-- Section 5: Commitments -->
+    <div class="article-section" id="commitments">
+      <h2 class="article-h2" data-i18n="article.s5.title">Our commitments</h2>
+      <p class="article-p" data-i18n="article.s5.p1">
+        We commit to three practices that follow from the Field–Instrument–Loop framework:
+      </p>
+      <p class="article-p" data-i18n="article.s5.p2">
+        <strong>Publish failure modes.</strong> We will not only report improvements. For every
+        method we describe, we will identify the conditions under which it fails and the inputs
+        that break it. This is not humility — it is scientific hygiene.
+      </p>
+      <p class="article-p" data-i18n="article.s5.p3">
+        <strong>Share evaluation artifacts.</strong> Rubrics, harnesses, and benchmark datasets
+        are research contributions. Where possible, we will release them alongside the methods
+        they evaluate. Evaluation infrastructure that lives only internally is infrastructure
+        that cannot be challenged or improved by the community.
+      </p>
+      <p class="article-p" data-i18n="article.s5.p4">
+        <strong>Name open problems explicitly.</strong> At the end of every article, we will list
+        the questions that remain open. A research program that cannot name what it does not know
+        has stopped doing research.
+      </p>
+    </div>
+
+    <!-- Section 6: Open Problems -->
+    <div class="article-section" id="open-problems">
+      <h2 class="article-h2" data-i18n="article.s6.title">Open Problems</h2>
+
+      <div class="callout">
+        <div class="callout-label" data-i18n="article.s6.op1.label">Open Problem</div>
+        <p class="callout-text" data-i18n="article.s6.op1">
+          How do we measure the quality of an agent's reasoning trace in a way that predicts
+          downstream task success across different domains? Current metrics conflate length with
+          depth and completeness with correctness.
+        </p>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label" data-i18n="article.s6.op2.label">Open Problem</div>
+        <p class="callout-text" data-i18n="article.s6.op2">
+          At what granularity should rubrics be defined to remain both precise enough to be
+          executable and general enough to transfer across task families? This is not a
+          philosophical question — it is an engineering constraint.
+        </p>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label" data-i18n="article.s6.op3.label">Open Problem</div>
+        <p class="callout-text" data-i18n="article.s6.op3">
+          Can we build evaluation harnesses that remain valid as models improve? Benchmarks
+          saturate. We do not yet have a principled approach to adaptive evaluation that
+          scales with model capability.
+        </p>
+      </div>
+
+      <p class="article-p" data-i18n="article.s6.p1">
+        These questions guide our current research program. We do not claim they are the right
+        questions — only that they are the ones we cannot currently answer.
+      </p>
+    </div>
+
+  </article>
+
+  <!-- Sidebar TOC -->
+  <aside class="toc-sidebar">
+    <div class="toc-label" data-i18n="article.toc.label">On This Page</div>
+    <ul class="toc-list">
+      <li class="toc-item active"><a href="#abstract" data-i18n="article.toc.abstract">Abstract</a></li>
+      <li class="toc-item"><a href="#why-wild" data-i18n="article.toc.why">Why we study intelligence in the wild</a></li>
+      <li class="toc-item"><a href="#field" data-i18n="article.toc.field">Field</a></li>
+      <li class="toc-item"><a href="#instrument" data-i18n="article.toc.instrument">Instrument</a></li>
+      <li class="toc-item"><a href="#loop" data-i18n="article.toc.loop">Loop</a></li>
+      <li class="toc-item"><a href="#commitments" data-i18n="article.toc.commitments">Our commitments</a></li>
+      <li class="toc-item"><a href="#open-problems" data-i18n="article.toc.openproblems">Open Problems</a></li>
+    </ul>
+
+    <hr class="toc-divider">
+
+    <div class="toc-section-label" data-i18n="article.cite.label">Cite This Essay</div>
+    <p class="cite-text" data-i18n="article.cite.text">
+      AllSpark Research. Intelligence in the Wild. <em>AS-RJ-2026-001</em>, June 12, 2026.
+    </p>
+    <span class="cite-link" data-i18n="article.cite.copy">Copy BibTeX</span>
+
+    <hr class="toc-divider">
+
+    <div class="toc-section-label" data-i18n="article.dl.label">Download</div>
+    <div class="dl-list">
+      <div class="dl-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        PDF <span class="text-dim" style="font-size:11px;">1.2 MB</span>
+      </div>
+      <div class="dl-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Markdown <span class="text-dim" style="font-size:11px;">18 KB</span>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<!-- ── Related Essays ─────────────────────────────────── -->
+<div class="related-section">
+  <hr class="divider" style="margin-bottom:64px;">
+  <div class="section-header" style="margin-bottom:40px;">
+    <div>
+      <div class="section-label" data-i18n="article.related.label">Related Essays</div>
+      <h2 class="section-title" style="font-size:28px;margin-bottom:0;" data-i18n="article.related.title">Continue Reading</h2>
+    </div>
+  </div>
+
+  <div class="blog-grid">
+    <a href="article.html" class="blog-card">
+      <div class="blog-card-image">
+        <svg data-constellation-viz style="width:100%;height:100%;opacity:0.4;"></svg>
+      </div>
+      <div class="blog-card-content">
+        <div class="blog-card-meta">
+          <span class="blog-card-type" data-i18n="article.rcard1.type">Foundation Essay</span>
+          <span class="blog-card-date">May 28, 2026</span>
+        </div>
+        <div class="blog-card-title" data-i18n="article.rcard1.title">Evaluation as Infrastructure</div>
+        <div class="blog-card-excerpt" data-i18n="article.rcard1.excerpt">Benchmark, Rubric, Harness, LLM Judge — these are not auxiliary tools but the instruments that define measurable progress.</div>
+        <div class="blog-card-footer">
+          <span class="read-more" data-i18n="article.readmore">Read more →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="article.html" class="blog-card">
+      <div class="blog-card-image">
+        <svg data-constellation-viz style="width:100%;height:100%;opacity:0.4;"></svg>
+      </div>
+      <div class="blog-card-content">
+        <div class="blog-card-meta">
+          <span class="blog-card-type" data-i18n="article.rcard2.type">Research Article</span>
+          <span class="blog-card-date">May 10, 2026</span>
+        </div>
+        <div class="blog-card-title" data-i18n="article.rcard2.title">When Moderation Becomes Reasoning</div>
+        <div class="blog-card-excerpt" data-i18n="article.rcard2.excerpt">Rule-grounded reasoning for content safety in real communities. We formulate content moderation as a structured inference problem.</div>
+        <div class="blog-card-footer">
+          <span class="read-more" data-i18n="article.readmore">Read more →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="article.html" class="blog-card">
+      <div class="blog-card-image">
+        <svg data-constellation-viz style="width:100%;height:100%;opacity:0.4;"></svg>
+      </div>
+      <div class="blog-card-content">
+        <div class="blog-card-meta">
+          <span class="blog-card-type" data-i18n="article.rcard3.type">System Note</span>
+          <span class="blog-card-date">Apr 22, 2026</span>
+        </div>
+        <div class="blog-card-title" data-i18n="article.rcard3.title">Harnesses as Scientific Instruments</div>
+        <div class="blog-card-excerpt" data-i18n="article.rcard3.excerpt">The architecture of a reproducible evaluation harness: how we design for repeatability, provenance, and incremental regression detection.</div>
+        <div class="blog-card-footer">
+          <span class="read-more" data-i18n="article.readmore">Read more →</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- ── Footer ──────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <span class="brand-logo footer-logo-svg"></span>
+        <span class="brand-wordmark"></span>
+        <span class="brand-suffix">Research</span>
+      </div>
+      <p class="footer-about" data-i18n="footer.about">
+        Xiaohongshu's foundation model research team. Building the instruments, rubrics, and feedback loops that turn real-world interactions into model evolution.
+      </p>
+      <div class="footer-social">
+        <a href="#" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer.links">Links</div>
+      <ul class="footer-links">
+        <li><a href="field-notes.html" data-i18n="footer.blog">Blog</a></li>
+        <li><a href="publications.html" data-i18n="footer.publications">Publications</a></li>
+        <li><a href="mailto:allspark-research@xiaohongshu.com" data-i18n="footer.contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer.copyright">© 2026 AllSpark Research · Xiaohongshu Foundation Model Team</span>
+    <div class="footer-bottom-links">
+      <a href="#" data-i18n="footer.privacy">Privacy</a>
+      <a href="#" data-i18n="footer.terms">Terms</a>
+      <a href="#" data-i18n="footer.sitemap">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<script src="constellation-viz.js"></script>
+<script src="i18n.js?v=1792631698000"></script>
+<script src="main.js?v=1787295424726"></script>
+<script src="logos.js?v=1787644916116"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="AllSpark Research app icon">
+  <title>AllSpark Research — Favicon / App icon (A mark)</title>
+  <defs>
+    <linearGradient id="f-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#101B2E"/>
+      <stop offset="1" stop-color="#0B0F14"/>
+    </linearGradient>
+    <radialGradient id="f-glow" cx="128" cy="128" r="68" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#EAF5FF" stop-opacity=".9"/>
+      <stop offset=".22" stop-color="#6EC6FF" stop-opacity=".5"/>
+      <stop offset=".6" stop-color="#3866FF" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#3866FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="256" height="256" rx="56" fill="url(#f-bg)"/>
+  <rect x="1" y="1" width="254" height="254" rx="55" fill="none" stroke="#2A313C" stroke-width="2" opacity=".7"/>
+
+  <!-- glow behind the A -->
+  <circle cx="128" cy="128" r="66" fill="url(#f-glow)"/>
+
+  <!-- V3 letter A mark (white on deep navy), centered in the 256 tile.
+       The counter (negative space) reveals the dark background, forming the
+       4-point star silhouette — same as the official A · Star mark. -->
+  <g transform="translate(128 137) scale(1.04) translate(-206.25 -136.5)" fill="#F5F7FA">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="
+      M 188.50 44.67 L 206.25 44.67 L 206.25 89.17
+      C 203.60 107.20 201.45 126.60 196.30 140.75
+      C 191.85 152.20 180.15 157.05 158.17 162.00
+      C 175.25 166.85 187.35 172.90 193.50 178.67
+      L 194.00 182.33 L 159.67 228.17 L 111.67 228.17 L 187.50 45.83 Z
+      M 206.25 44.67 L 224.83 44.67 L 301.50 227.67 L 300.33 228.33 L 253.83 228.17
+      L 219.50 183.00 L 218.67 179.83
+      C 224.95 173.70 237.05 167.55 254.67 162.00
+      C 233.20 156.25 221.85 151.10 217.35 140.30
+      C 212.30 126.35 209.45 107.35 206.25 89.17 Z"/>
+  </g>
+</svg>

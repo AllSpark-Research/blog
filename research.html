@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="research.title">Research Fields — AllSpark Research</title>
+  <link rel="stylesheet" href="style.css?v=1787644916116" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1787295424726" />
+  <style>
+    .sub-hero {
+      min-height: 40vh;
+      padding-top: var(--nav-h);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .sub-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .sub-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: 80px 48px;
+      width: 100%;
+    }
+    .breadcrumb {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+    .breadcrumb .sep { margin: 0 8px; opacity: 0.5; }
+    .breadcrumb .current { color: var(--accent); }
+    .page-title {
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .page-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 28px;
+      max-width: 480px;
+    }
+    .sub-hero-viz {
+      position: relative;
+      height: 260px;
+    }
+    .problems-section {
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: 0 48px 100px;
+    }
+    .problems-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+    }
+    .problem-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .problem-num {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      min-width: 28px;
+      letter-spacing: 0.5px;
+    }
+    .problem-text {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .essays-section {
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: 0 48px 100px;
+    }
+    @media (max-width: 1024px) {
+      .sub-hero-content { grid-template-columns: 1fr; }
+      .problems-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .sub-hero-content { padding: 60px 24px; }
+      .problems-section, .essays-section { padding: 0 24px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ─────────────────────────────────────── -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <span class="brand-logo nav-logo-svg"></span>
+    <span class="brand-wordmark"></span>
+    <span class="brand-suffix">Research</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="field-notes.html" data-i18n="nav.blog">Blog</a></li>
+    <li><a href="publications.html" data-i18n="nav.publications">Publications</a></li>
+    <li><a href="about.html#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="theme-toggle">Light</button>
+    <div class="nav-lang" id="lang-toggle"><span class="en active">EN</span> / <span class="zh">中文</span></div>
+    <button class="btn-primary" style="padding: 8px 18px; font-size: 13px;" data-i18n="nav.subscribe">Subscribe</button>
+  </div>
+</nav>
+
+<!-- ── Sub Hero ───────────────────────────────────────── -->
+<section class="sub-hero">
+  <div class="sub-hero-content">
+    <div>
+      <div class="breadcrumb">
+        <span class="current" data-i18n="research.breadcrumb">Research Journal</span>
+      </div>
+      <h1 class="page-title" data-i18n="research.hero.title">Research Journal</h1>
+      <p class="page-desc" data-i18n="research.hero.desc">
+        AllSpark studies foundation models and agents in real-world interaction systems. Three interlocking areas form our research program.
+      </p>
+      <a href="about.html" class="btn-secondary"><span data-i18n="research.hero.btn">Our Approach</span> <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Research Fields Full Grid ──────────────────────── -->
+<section class="section">
+  <div class="fields-grid">
+
+    <div class="field-card">
+      <div class="field-icon" data-facet-icon="foundation">
+        <svg viewBox="0 0 56 56" fill="none" stroke="var(--accent)" stroke-width="1">
+          <path d="M28 6L50 18V38L28 50L6 38V18L28 6Z" opacity="0.4"/>
+          <path d="M28 6V50M6 18L50 38M50 18L6 38" opacity="0.2"/>
+          <circle cx="28" cy="28" r="6" fill="var(--accent)" opacity="0.3"/>
+        </svg>
+      </div>
+      <div class="field-name" data-i18n="index.field.foundation.name">Foundation Models</div>
+      <div class="field-desc" data-i18n="research.field.foundation.desc">Advance base models that learn, reason, and generalize across modalities and environments. We study how real-world interaction shapes fundamental capabilities — from language understanding to multimodal grounding and long-context reasoning.</div>
+      <div class="field-meta">
+        <div class="field-tags">
+          <span class="tag" data-i18n="index.field.foundation.tag1">Pretraining</span>
+          <span class="tag" data-i18n="index.field.foundation.tag2">Scaling</span>
+          <span class="tag" data-i18n="index.field.foundation.tag3">Capabilities</span>
+        </div>
+        <a href="field-notes.html" class="field-link" data-i18n="research.field.foundation.link">8 essays →</a>
+      </div>
+    </div>
+
+    <div class="field-card">
+      <div class="field-icon" data-facet-icon="agentic">
+        <svg viewBox="0 0 56 56" fill="none" stroke="var(--accent)" stroke-width="1">
+          <circle cx="28" cy="28" r="16" opacity="0.3"/>
+          <circle cx="28" cy="28" r="8" opacity="0.2"/>
+          <path d="M28 12V8M28 48V44M12 28H8M48 28H44" stroke-width="1.5"/>
+          <circle cx="28" cy="12" r="3" fill="var(--accent)" opacity="0.4"/>
+          <circle cx="28" cy="44" r="3" fill="var(--accent)" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="field-name" data-i18n="index.field.agentic.name">Agentic Systems</div>
+      <div class="field-desc" data-i18n="research.field.agentic.desc">Build agents that perceive, plan, act, and learn in complex, real-world interaction loops. We design agentic runtimes, study tool-use failure modes, and develop methods for agents to improve from their own trajectories.</div>
+      <div class="field-meta">
+        <div class="field-tags">
+          <span class="tag" data-i18n="index.field.agentic.tag1">Planning</span>
+          <span class="tag" data-i18n="index.field.agentic.tag2">Tool Use</span>
+          <span class="tag" data-i18n="index.field.agentic.tag3">Memory</span>
+          <span class="tag" data-i18n="research.field.agentic.tag4">Reflection</span>
+        </div>
+        <a href="field-notes.html" class="field-link" data-i18n="research.field.agentic.link">7 essays →</a>
+      </div>
+    </div>
+
+    <div class="field-card">
+      <div class="field-icon" data-facet-icon="evaluation">
+        <svg viewBox="0 0 56 56" fill="none" stroke="var(--accent)" stroke-width="1">
+          <rect x="8" y="8" width="40" height="40" rx="4" opacity="0.3"/>
+          <path d="M16 28L22 34L40 16" stroke-width="2" opacity="0.6"/>
+          <circle cx="28" cy="28" r="3" fill="var(--accent)" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="field-name" data-i18n="index.field.evaluation.name">Evaluation & Harness</div>
+      <div class="field-desc" data-i18n="research.field.evaluation.desc">Design rigorous evaluations and reusable harnesses to measure capability and behavior. We treat evaluation as infrastructure — not a post-hoc check, but the instrument that defines what progress means.</div>
+      <div class="field-meta">
+        <div class="field-tags">
+          <span class="tag" data-i18n="index.field.evaluation.tag1">Benchmarks</span>
+          <span class="tag" data-i18n="index.field.evaluation.tag2">Datasets</span>
+          <span class="tag" data-i18n="index.field.evaluation.tag3">Harnesses</span>
+          <span class="tag" data-i18n="research.field.evaluation.tag4">LLM Judge</span>
+        </div>
+        <a href="field-notes.html" class="field-link" data-i18n="research.field.evaluation.link">10 essays →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Open Problems ──────────────────────────────────── -->
+<div class="problems-section">
+  <hr class="divider" style="margin-bottom:64px;">
+  <div class="problems-grid">
+    <div>
+      <div class="section-label" data-i18n="research.problems.label">Open Problems</div>
+      <h2 class="section-title" style="font-size:28px;margin-bottom:12px;" data-i18n="research.problems.title">Frontier Questions</h2>
+      <p style="font-size:14px;color:var(--text-secondary);line-height:1.65;margin-bottom:20px;" data-i18n="research.problems.desc">
+        Problems guiding our current research. We name them explicitly.
+      </p>
+      <a href="field-notes.html" class="view-all" data-i18n="research.problems.view">View all →</a>
+    </div>
+    <div>
+      <div class="problem-item">
+        <span class="problem-num">01</span>
+        <span class="problem-text" data-i18n="research.problem1">How do real-world tasks shape reasoning ability beyond what synthetic benchmarks can reveal?</span>
+      </div>
+      <div class="problem-item">
+        <span class="problem-num">02</span>
+        <span class="problem-text" data-i18n="research.problem2">How should rubrics become executable evaluators without losing semantic precision?</span>
+      </div>
+      <div class="problem-item">
+        <span class="problem-num">03</span>
+        <span class="problem-text" data-i18n="research.problem3">What properties of an agent trajectory make it valuable as training data?</span>
+      </div>
+      <div class="problem-item">
+        <span class="problem-num">04</span>
+        <span class="problem-text" data-i18n="research.problem4">How do we evaluate user understanding without reducing it to click-prediction proxies?</span>
+      </div>
+      <div class="problem-item">
+        <span class="problem-num">05</span>
+        <span class="problem-text" data-i18n="research.problem5">Can safety become a runtime property of agentic systems rather than a post-hoc filter?</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Featured Essays ────────────────────────────────── -->
+<div class="essays-section">
+  <hr class="divider" style="margin-bottom:64px;">
+  <div class="section-header" style="margin-bottom:40px;">
+    <div>
+      <div class="section-label" data-i18n="research.featured.label">Featured Essays</div>
+      <h2 class="section-title" style="font-size:28px;margin-bottom:0;" data-i18n="research.featured.title">Selected Reading</h2>
+    </div>
+    <a href="field-notes.html" class="view-all" data-i18n="research.featured.all">All essays →</a>
+  </div>
+
+  <div class="blog-grid">
+    <a href="article.html" class="blog-card">
+      <div class="blog-card-image">
+        <svg data-constellation-viz style="width:100%;height:100%;opacity:0.4;"></svg>
+      </div>
+      <div class="blog-card-content">
+        <div class="blog-card-meta">
+          <span class="blog-card-type" data-i18n="research.rcard1.type">Manifesto</span>
+          <span class="blog-card-date">Jun 12, 2026</span>
+        </div>
+        <div class="blog-card-title" data-i18n="research.rcard1.title">Intelligence in the Wild</div>
+        <div class="blog-card-excerpt" data-i18n="research.rcard1.excerpt">The Field–Instrument–Loop framework for studying real-world AI behavior. Sets the agenda for AllSpark's research program.</div>
+        <div class="blog-card-footer">
+          <span class="read-more" data-i18n="index.readmore">Read more →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="article.html" class="blog-card">
+      <div class="blog-card-image">
+        <svg data-constellation-viz style="width:100%;height:100%;opacity:0.4;"></svg>
+      </div>
+      <div class="blog-card-content">
+        <div class="blog-card-meta">
+          <span class="blog-card-type" data-i18n="research.rcard2.type">Research Article</span>
+          <span class="blog-card-date">May 10, 2026</span>
+        </div>
+        <div class="blog-card-title" data-i18n="research.rcard2.title">When Moderation Becomes Reasoning</div>
+        <div class="blog-card-excerpt" data-i18n="research.rcard2.excerpt">Rule-grounded reasoning for content safety. We formulate moderation as structured inference and describe the failure modes we observed.</div>
+        <div class="blog-card-footer">
+          <span class="read-more" data-i18n="index.readmore">Read more →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="article.html" class="blog-card">
+      <div class="blog-card-image">
+        <svg data-constellation-viz style="width:100%;height:100%;opacity:0.4;"></svg>
+      </div>
+      <div class="blog-card-content">
+        <div class="blog-card-meta">
+          <span class="blog-card-type" data-i18n="research.rcard3.type">System Note</span>
+          <span class="blog-card-date">Apr 22, 2026</span>
+        </div>
+        <div class="blog-card-title" data-i18n="research.rcard3.title">Harnesses as Scientific Instruments</div>
+        <div class="blog-card-excerpt" data-i18n="research.rcard3.excerpt">Architecture of a reproducible evaluation harness. How we design for repeatability, provenance, and incremental regression detection.</div>
+        <div class="blog-card-footer">
+          <span class="read-more" data-i18n="index.readmore">Read more →</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- ── Footer ──────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <span class="brand-logo footer-logo-svg"></span>
+        <span class="brand-wordmark"></span>
+        <span class="brand-suffix">Research</span>
+      </div>
+      <p class="footer-about" data-i18n="footer.about">
+        Xiaohongshu's foundation model research team. Building the instruments, rubrics, and feedback loops that turn real-world interactions into model evolution.
+      </p>
+      <div class="footer-social">
+        <a href="#" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer.links">Links</div>
+      <ul class="footer-links">
+        <li><a href="field-notes.html" data-i18n="footer.blog">Blog</a></li>
+        <li><a href="publications.html" data-i18n="footer.publications">Publications</a></li>
+        <li><a href="mailto:allspark-research@xiaohongshu.com" data-i18n="footer.contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer.copyright">© 2026 AllSpark Research · Xiaohongshu Foundation Model Team</span>
+    <div class="footer-bottom-links">
+      <a href="#" data-i18n="footer.privacy">Privacy</a>
+      <a href="#" data-i18n="footer.terms">Terms</a>
+      <a href="#" data-i18n="footer.sitemap">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<script src="constellation-viz.js"></script>
+<script src="i18n.js?v=1792631698000"></script>
+<script src="main.js?v=1787295424726"></script>
+<script src="logos.js?v=1787644916116"></script>
+</body>
+</html>

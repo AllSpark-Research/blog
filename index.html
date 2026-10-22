@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title data-i18n="index.title">AllSpark Research — Intelligence in the Wild</title>
+  <link rel="stylesheet" href="style.css?v=1787644916116" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1787295424726" />
+</head>
+<body>
+
+<!-- ── Navigation ─────────────────────────────────────── -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <span class="brand-logo nav-logo-svg"></span>
+    <span class="brand-wordmark"></span>
+    <span class="brand-suffix">Research</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="field-notes.html" data-i18n="nav.blog">Blog</a></li>
+    <li><a href="publications.html" data-i18n="nav.publications">Publications</a></li>
+    <li><a href="about.html#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="theme-toggle">Light</button>
+    <div class="nav-lang" id="lang-toggle"><span class="en active">EN</span> / <span class="zh">中文</span></div>
+    <button class="btn-primary" style="padding: 8px 18px; font-size: 13px;" data-i18n="nav.subscribe">Subscribe</button>
+  </div>
+</nav>
+
+<!-- ── Hero Section ───────────────────────────────────── -->
+<div class="snap-container" id="snap-container">
+
+<section class="hero snap-section">
+  <div class="hero-bg">
+    <canvas id="constellation-canvas" data-constellation-viz></canvas>
+    <canvas id="startrail-canvas" style="position:absolute;inset:0;width:100%;height:100%;display:none;"></canvas>
+    <div class="udg-caption">
+      <span class="udg-caption-title" id="udg-title" data-i18n="index.udg.title">Unit-Distance Graph</span>
+      <span class="udg-caption-note" id="udg-note" data-i18n="index.udg.note">625 points · 2800 unit edges — a configuration disproving Erdős' unit-distance conjecture, found with AI.</span>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span data-i18n="index.hero.eyebrow.research">RESEARCH JOURNAL</span> <span class="divider"></span> <span data-i18n="index.hero.eyebrow.season">SEASON 1</span>
+    </div>
+    <h1 class="hero-title" data-i18n="index.hero.title">Intelligence<br>in the Wild</h1>
+    <div class="hero-right">
+      <p class="hero-subtitle" data-i18n="index.hero.subtitle">Foundation models and agents, studied through real-world interactions.</p>
+      <p class="hero-desc" data-i18n="index.hero.desc">
+        We build the instruments, rubrics, and feedback loops that turn industrial scenarios into model evolution.
+      </p>
+      <div class="hero-actions">
+        <a href="field-notes.html" class="btn-primary"><span data-i18n="index.hero.btn.blog">Read the Blog</span> <span>→</span></a>
+        <a href="publications.html" class="btn-secondary"><span data-i18n="index.hero.btn.pubs">Publications</span> <span>→</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="snap-scroll-hint" aria-hidden="true">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+</section>
+
+<!-- ── Research Fields ─────────────────────────────────── -->
+<section class="section snap-section snap-section--pad">
+  <div class="section-header">
+    <div>
+      <div class="section-label" data-i18n="index.fields.label">Research Fields</div>
+      <h2 class="section-title" data-i18n="index.fields.title">Three Areas of Inquiry</h2>
+      <p class="section-subtitle" data-i18n="index.fields.subtitle">AllSpark studies foundation models and agents in real-world interaction systems.</p>
+    </div>
+    <a href="research.html" class="view-all" data-i18n="index.fields.approach">Our Approach →</a>
+  </div>
+
+  <div class="fields-grid">
+
+    <div class="field-card">
+      <div class="field-icon" data-facet-icon="foundation">
+        <svg viewBox="0 0 56 56" fill="none" stroke="var(--accent)" stroke-width="1">
+          <path d="M28 6L50 18V38L28 50L6 38V18L28 6Z" opacity="0.4"/>
+          <path d="M28 6V50M6 18L50 38M50 18L6 38" opacity="0.2"/>
+          <circle cx="28" cy="28" r="6" fill="var(--accent)" opacity="0.3"/>
+        </svg>
+      </div>
+      <div class="field-name" data-i18n="index.field.foundation.name">Foundation Models</div>
+      <div class="field-desc" data-i18n="index.field.foundation.desc">Advance base models that learn, reason, and generalize across modalities and environments.</div>
+      <div class="field-meta">
+        <div class="field-tags">
+          <span class="tag" data-i18n="index.field.foundation.tag1">Pretraining</span>
+          <span class="tag" data-i18n="index.field.foundation.tag2">Scaling</span>
+          <span class="tag" data-i18n="index.field.foundation.tag3">Capabilities</span>
+        </div>
+        <a href="research.html" class="field-link" data-i18n="index.field.foundation.link">8 essays →</a>
+      </div>
+    </div>
+
+    <div class="field-card">
+      <div class="field-icon" data-facet-icon="agentic">
+        <svg viewBox="0 0 56 56" fill="none" stroke="var(--accent)" stroke-width="1">
+          <circle cx="28" cy="28" r="16" opacity="0.3"/>
+          <circle cx="28" cy="28" r="8" opacity="0.2"/>
+          <path d="M28 12V8M28 48V44M12 28H8M48 28H44" stroke-width="1.5"/>
+          <circle cx="28" cy="12" r="3" fill="var(--accent)" opacity="0.4"/>
+          <circle cx="28" cy="44" r="3" fill="var(--accent)" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="field-name" data-i18n="index.field.agentic.name">Agentic Systems</div>
+      <div class="field-desc" data-i18n="index.field.agentic.desc">Build agents that perceive, plan, act, and learn in complex, real-world interaction loops.</div>
+      <div class="field-meta">
+        <div class="field-tags">
+          <span class="tag" data-i18n="index.field.agentic.tag1">Planning</span>
+          <span class="tag" data-i18n="index.field.agentic.tag2">Tool Use</span>
+          <span class="tag" data-i18n="index.field.agentic.tag3">Memory</span>
+        </div>
+        <a href="research.html" class="field-link" data-i18n="index.field.agentic.link">7 essays →</a>
+      </div>
+    </div>
+
+    <div class="field-card">
+      <div class="field-icon" data-facet-icon="evaluation">
+        <svg viewBox="0 0 56 56" fill="none" stroke="var(--accent)" stroke-width="1">
+          <rect x="8" y="8" width="40" height="40" rx="4" opacity="0.3"/>
+          <path d="M16 28L22 34L40 16" stroke-width="2" opacity="0.6"/>
+          <circle cx="28" cy="28" r="3" fill="var(--accent)" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="field-name" data-i18n="index.field.evaluation.name">Evaluation & Harness</div>
+      <div class="field-desc" data-i18n="index.field.evaluation.desc">Design rigorous evaluations and reusable harnesses to measure capability and behavior.</div>
+      <div class="field-meta">
+        <div class="field-tags">
+          <span class="tag" data-i18n="index.field.evaluation.tag1">Benchmarks</span>
+          <span class="tag" data-i18n="index.field.evaluation.tag2">Datasets</span>
+          <span class="tag" data-i18n="index.field.evaluation.tag3">Harnesses</span>
+        </div>
+        <a href="research.html" class="field-link" data-i18n="index.field.evaluation.link">10 essays →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Latest from the Blog ────────────────────────────── -->
+<section class="section snap-section snap-section--pad" style="padding-top: 0;">
+  <div class="section-header">
+    <div>
+      <div class="section-label" data-i18n="index.latest.label">Latest from the Blog</div>
+      <h2 class="section-title" data-i18n="index.latest.title">Recent Writing</h2>
+    </div>
+    <a href="field-notes.html" class="view-all" data-i18n="index.latest.all">All essays →</a>
+  </div>
+
+  <div class="blog-grid">
+
+    <a href="article.html" class="blog-card">
+      <div class="blog-card-image">
+        <svg data-constellation-viz style="width:100%;height:100%;opacity:0.4;"></svg>
+      </div>
+      <div class="blog-card-content">
+        <div class="blog-card-meta">
+          <span class="blog-card-type" data-i18n="index.card1.type">Manifesto</span>
+          <span class="blog-card-date">Jun 12, 2026</span>
+        </div>
+        <div class="blog-card-title" data-i18n="index.card1.title">Intelligence in the Wild</div>
+        <div class="blog-card-excerpt" data-i18n="index.card1.excerpt">How AllSpark studies foundation models and agents through real-world interactions, building instruments that turn scenarios into model evolution.</div>
+        <div class="blog-card-footer">
+          <span class="read-more" data-i18n="index.readmore">Read more →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="article.html" class="blog-card">
+      <div class="blog-card-image">
+        <svg data-constellation-viz style="width:100%;height:100%;opacity:0.4;"></svg>
+      </div>
+      <div class="blog-card-content">
+        <div class="blog-card-meta">
+          <span class="blog-card-type" data-i18n="index.card2.type">Foundation Essay</span>
+          <span class="blog-card-date">May 28, 2026</span>
+        </div>
+        <div class="blog-card-title" data-i18n="index.card2.title">Evaluation as Infrastructure</div>
+        <div class="blog-card-excerpt" data-i18n="index.card2.excerpt">Evaluation is not a post-hoc check — it is the scientific instrument that defines what progress means. We describe our approach to building evaluation infrastructure.</div>
+        <div class="blog-card-footer">
+          <span class="read-more" data-i18n="index.readmore">Read more →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="article.html" class="blog-card">
+      <div class="blog-card-image">
+        <svg data-constellation-viz style="width:100%;height:100%;opacity:0.4;"></svg>
+      </div>
+      <div class="blog-card-content">
+        <div class="blog-card-meta">
+          <span class="blog-card-type" data-i18n="index.card3.type">Research Article</span>
+          <span class="blog-card-date">May 15, 2026</span>
+        </div>
+        <div class="blog-card-title" data-i18n="index.card3.title">From Foundation Models to Agentic Systems</div>
+        <div class="blog-card-excerpt" data-i18n="index.card3.excerpt">Agents are not complex workflows. They are models operating in perception–action–reflection loops, shaped by real feedback from real environments.</div>
+        <div class="blog-card-footer">
+          <span class="read-more" data-i18n="index.readmore">Read more →</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+</section>
+
+<!-- ── Subscribe + Footer (screen 4) ────────────── -->
+<div class="snap-section snap-section--end">
+
+  <!-- ── Subscribe ──────────────────────────────────────── -->
+  <div class="subscribe-section">
+    <div class="subscribe-content">
+      <div class="subscribe-icon">
+        <span class="brand-logo"></span>
+      </div>
+      <div>
+        <div class="subscribe-title" data-i18n="index.subscribe.title">Get the latest research updates</div>
+        <div class="subscribe-desc" data-i18n="index.subscribe.desc">We publish when we have something worth saying. No spam, no schedule.</div>
+      </div>
+    </div>
+    <div class="subscribe-form">
+      <input type="email" class="subscribe-input" data-i18n-attr="placeholder:index.subscribe.placeholder" placeholder="your@email.com">
+      <button class="subscribe-btn" data-i18n="index.subscribe.btn">Subscribe</button>
+    </div>
+  </div>
+
+<!-- ── Footer ──────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <span class="brand-logo footer-logo-svg"></span>
+        <span class="brand-wordmark"></span>
+        <span class="brand-suffix">Research</span>
+      </div>
+      <p class="footer-about" data-i18n="footer.about">
+        Xiaohongshu's foundation model research team. Building the instruments, rubrics, and feedback loops that turn real-world interactions into model evolution.
+      </p>
+      <div class="footer-social">
+        <a href="#" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer.links">Links</div>
+      <ul class="footer-links">
+        <li><a href="field-notes.html" data-i18n="footer.blog">Blog</a></li>
+        <li><a href="publications.html" data-i18n="footer.publications">Publications</a></li>
+        <li><a href="mailto:allspark-research@xiaohongshu.com" data-i18n="footer.contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer.copyright">© 2026 AllSpark Research · Xiaohongshu Foundation Model Team</span>
+    <div class="footer-bottom-links">
+      <a href="#" data-i18n="footer.privacy">Privacy</a>
+      <a href="#" data-i18n="footer.terms">Terms</a>
+      <a href="#" data-i18n="footer.sitemap">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /.snap-section--end -->
+
+</div><!-- /.snap-container -->
+
+<!-- ── Snap dot navigation ── -->
+<div class="snap-dots" id="snap-dots" aria-label="Section navigation">
+  <button class="snap-dot active" data-index="0" aria-label="Intelligence in the Wild"></button>
+  <button class="snap-dot" data-index="1" aria-label="Research Fields"></button>
+  <button class="snap-dot" data-index="2" aria-label="Recent Writing"></button>
+  <button class="snap-dot" data-index="3" aria-label="Subscribe"></button>
+</div>
+
+<script src="constellation-viz.js"></script>
+<script src="star-trail.js?v=1786331869"></script>
+<script src="i18n.js?v=1792631698000"></script>
+<script src="main.js?v=1787295424726"></script>
+<script src="logos.js?v=1787644916116"></script>
+<script src="snap.js?v=1786329086"></script>
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="about.title">About — AllSpark Research</title>
+  <link rel="stylesheet" href="style.css?v=1787644916116" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1787295424726" />
+  <style>
+    /* Mission Hero */
+    .about-mission {
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: calc(var(--nav-h) + 80px) 48px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .mission-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .mission-title {
+      font-size: clamp(32px, 3.5vw, 48px);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+    .mission-body {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+    .mission-body p { margin-bottom: 16px; }
+    .mission-body p:last-child { margin-bottom: 0; }
+
+    .mission-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      padding-top: 16px;
+    }
+    .stat-item {
+      padding-left: 20px;
+      border-left: 2px solid var(--border-color);
+    }
+    .stat-num {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Commitments */
+    .commitments-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .commitment-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 32px;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+    .commitment-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .commitment-num {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+    .commitment-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .commitment-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* Research Approach */
+    .approach-section {
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: 0 48px 100px;
+    }
+    .approach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+    .approach-text {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .protocol-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 32px;
+    }
+    .protocol-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .protocol-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 12px 0;
+    }
+    .protocol-step + .protocol-step {
+      border-top: 1px solid var(--border-color);
+    }
+    .step-num {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      min-width: 24px;
+      margin-top: 1px;
+    }
+    .step-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Writing Standards */
+    .standards-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 48px 100px;
+    }
+    .standards-text {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .callout {
+      margin: 32px 0;
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+    }
+    .callout-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .callout-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: 0 48px 100px;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+    .contact-text {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .about-mission { grid-template-columns: 1fr; }
+      .commitments-grid { grid-template-columns: 1fr; }
+      .approach-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .about-mission, .approach-section, .standards-section, .contact-section {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ─────────────────────────────────────── -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <span class="brand-logo nav-logo-svg"></span>
+    <span class="brand-wordmark"></span>
+    <span class="brand-suffix">Research</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="field-notes.html" data-i18n="nav.blog">Blog</a></li>
+    <li><a href="publications.html" data-i18n="nav.publications">Publications</a></li>
+    <li><a href="about.html#contact" class="active" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="theme-toggle">Light</button>
+    <div class="nav-lang" id="lang-toggle"><span class="en active">EN</span> / <span class="zh">中文</span></div>
+    <button class="btn-primary" style="padding: 8px 18px; font-size: 13px;" data-i18n="nav.subscribe">Subscribe</button>
+  </div>
+</nav>
+
+<!-- ── Mission ────────────────────────────────────────── -->
+<div class="about-mission">
+  <div>
+    <div class="mission-eyebrow" data-i18n="about.eyebrow">About AllSpark Research</div>
+    <h1 class="mission-title" data-i18n="about.mission.title">Intelligence is field-tested, not defined.</h1>
+    <div class="mission-body">
+      <p data-i18n="about.mission.p1">
+        AllSpark Research is Xiaohongshu's foundation model research team. We build
+        foundation models, agentic systems, post-training methods, evaluation infrastructure,
+        and production AI systems grounded in real-world community interactions.
+      </p>
+      <p data-i18n="about.mission.p2">
+        This journal is our window to the research community. It is not a marketing channel
+        and not a project summary. It is a record of what we observed, how we formalized it,
+        what we tried, and what remains open.
+      </p>
+      <p data-i18n="about.mission.p3">
+        We publish because hard problems in AI are better solved by a community that can see
+        them clearly. The failures are as important as the results. The open problems are as
+        important as the methods.
+      </p>
+    </div>
+  </div>
+  <div class="mission-stats">
+    <div class="stat-item">
+      <div class="stat-num">45<span>+</span></div>
+      <div class="stat-label" data-i18n="about.stat1.label">Published essays and field notes</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label" data-i18n="about.stat2.label">Active research fields</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">40<span>+</span></div>
+      <div class="stat-label" data-i18n="about.stat3.label">Task-specific evaluation harnesses</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">200<span>+</span></div>
+      <div class="stat-label" data-i18n="about.stat4.label">Reusable rubric criteria in our library</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Three Core Commitments ─────────────────────────── -->
+<section class="section" style="padding-top:0;">
+  <hr class="divider" style="margin-bottom:80px;">
+  <div class="section-header">
+    <div>
+      <div class="section-label" data-i18n="about.commitments.label">What We Believe</div>
+      <h2 class="section-title" data-i18n="about.commitments.title">Three Core Commitments</h2>
+    </div>
+  </div>
+
+  <div class="commitments-grid">
+    <div class="commitment-card">
+      <div class="commitment-num">01 —</div>
+      <div class="commitment-title" data-i18n="about.c1.title">Intelligence is field-tested.</div>
+      <div class="commitment-text" data-i18n="about.c1.text">
+        Intelligence is not only the capability encoded in model parameters, and not the score on a leaderboard.
+        Intelligence must be tested in real communities, real content, real tools, real feedback, and real constraints.
+        A model that cannot operate in the wild has not yet demonstrated the intelligence we care about.
+      </div>
+    </div>
+    <div class="commitment-card">
+      <div class="commitment-num">02 —</div>
+      <div class="commitment-title" data-i18n="about.c2.title">Evaluation is infrastructure.</div>
+      <div class="commitment-text" data-i18n="about.c2.text">
+        Evaluation is not the acceptance step after training — it is the scientific instrument that defines
+        what progress means. Benchmark, Rubric, Harness, LLM Judge, Human Calibration, and Online Feedback
+        together constitute the measurement infrastructure that makes model evolution possible.
+      </div>
+    </div>
+    <div class="commitment-card">
+      <div class="commitment-num">03 —</div>
+      <div class="commitment-title" data-i18n="about.c3.title">Agents evolve through interaction.</div>
+      <div class="commitment-text" data-i18n="about.c3.text">
+        An agent is not a more complex workflow. It is a model operating in a closed loop: perceive, plan,
+        act, observe, reflect, and update. Trajectories, failure cases, and real feedback are the fuel for
+        the next generation of models. The loop is not a pipeline — it is a scientific posture.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Research Approach ──────────────────────────────── -->
+<div class="approach-section">
+  <hr class="divider" style="margin-bottom:80px;">
+  <div class="approach-grid">
+    <div>
+      <div class="section-label" data-i18n="about.approach.label">Research Approach</div>
+      <h2 class="section-title" style="font-size:30px;margin-bottom:24px;" data-i18n="about.approach.title">How We Work</h2>
+      <p class="approach-text" data-i18n="about.approach.p1">
+        Our research cycle begins with field observation. We do not start from a theoretical
+        gap in the literature — we start from a failure mode we encountered in production.
+      </p>
+      <p class="approach-text" data-i18n="about.approach.p2">
+        We then abstract the failure into a general research problem: something that could be
+        formalized, evaluated, and trained on. We build the instrument before we build the method.
+      </p>
+      <p class="approach-text" data-i18n="about.approach.p3">
+        Finally, we close the loop: successful methods return to the field as updated model
+        behavior, and the observation cycle begins again.
+      </p>
+    </div>
+    <div>
+      <div class="protocol-box">
+        <div class="protocol-title" data-i18n="about.protocol.title">Research Protocol</div>
+        <div class="protocol-step">
+          <div class="step-num">01</div>
+          <div class="step-text" data-i18n="about.protocol.s1">What did we observe in the field?</div>
+        </div>
+        <div class="protocol-step">
+          <div class="step-num">02</div>
+          <div class="step-text" data-i18n="about.protocol.s2">What is the general intelligence problem behind it?</div>
+        </div>
+        <div class="protocol-step">
+          <div class="step-num">03</div>
+          <div class="step-text" data-i18n="about.protocol.s3">How do we formalize and evaluate it?</div>
+        </div>
+        <div class="protocol-step">
+          <div class="step-num">04</div>
+          <div class="step-text" data-i18n="about.protocol.s4">Where does the method fail?</div>
+        </div>
+        <div class="protocol-step">
+          <div class="step-num">05</div>
+          <div class="step-text" data-i18n="about.protocol.s5">What remains open?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Writing Standards ──────────────────────────────── -->
+<div class="standards-section">
+  <hr class="divider" style="margin-bottom:80px;">
+  <div class="section-label" data-i18n="about.standards.label">Editorial Standard</div>
+  <h2 class="section-title" style="font-size:30px;margin-bottom:24px;" data-i18n="about.standards.title">What We Publish and Why</h2>
+
+  <p class="standards-text" data-i18n="about.standards.p1">
+    Every article must pass a seven-dimension rubric before publication. The dimensions are:
+    generality (does it ask a transferable research question?), field-groundedness (does it come
+    from a real scenario?), formalization (is there a clear problem model?), evaluability (is
+    there a measurement approach?), failure honesty (are failure modes named?), open problems
+    (is there a clearly stated frontier?), and brand consistency.
+  </p>
+
+  <div class="callout">
+    <div class="callout-label" data-i18n="about.standards.callout.label">What We Will Not Publish</div>
+    <p class="callout-text" data-i18n="about.standards.callout.text">
+      Articles that only report improvements. Articles that use phrases like "significant
+      upgrade," "comprehensive breakthrough," or "leading performance" as their primary
+      claim. Articles that do not name a single failure mode or limitation. Articles that
+      present business results without a general research question.
+    </p>
+  </div>
+
+  <p class="standards-text" data-i18n="about.standards.p2">
+    We do not claim our work is a general solution. We do not hide the cases where it fails.
+    We believe that intellectual honesty is the only foundation on which long-term technical
+    credibility can be built.
+  </p>
+</div>
+
+<!-- ── Contact & Subscribe ────────────────────────────── -->
+<div class="contact-section" id="contact">
+  <hr class="divider" style="margin-bottom:80px;">
+  <div class="contact-grid">
+    <div>
+      <div class="section-label" data-i18n="about.contact.label1">Collaboration</div>
+      <h2 class="section-title" style="font-size:28px;margin-bottom:16px;" data-i18n="about.contact.title1">Work With Us</h2>
+      <p class="contact-text" data-i18n="about.contact.p1">
+        We are interested in collaborating with academic research groups, external evaluation
+        teams, and practitioners working on shared problems. If your work intersects with our
+        research fields, we would like to hear about it.
+      </p>
+      <a href="mailto:allspark-research@xiaohongshu.com" class="btn-primary" data-i18n="about.contact.btn">
+        Contact AllSpark Research →
+      </a>
+    </div>
+    <div>
+      <div class="section-label" data-i18n="about.contact.label2">Stay Updated</div>
+      <h2 class="section-title" style="font-size:28px;margin-bottom:16px;" data-i18n="about.contact.title2">Research Feed</h2>
+      <p class="contact-text" data-i18n="about.contact.p2">
+        We publish when we have something worth saying — not on a fixed schedule. Subscribe
+        to receive updates when new essays appear.
+      </p>
+      <div class="subscribe-form" style="max-width:360px;">
+        <input type="email" class="subscribe-input" placeholder="your@email.com" data-i18n-attr="placeholder:about.contact.placeholder">
+        <button class="subscribe-btn" data-i18n="about.contact.subscribe">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Footer ──────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <span class="brand-logo footer-logo-svg"></span>
+        <span class="brand-wordmark"></span>
+        <span class="brand-suffix">Research</span>
+      </div>
+      <p class="footer-about" data-i18n="footer.about">
+        Xiaohongshu's foundation model research team. Building the instruments, rubrics, and feedback loops that turn real-world interactions into model evolution.
+      </p>
+      <div class="footer-social">
+        <a href="#" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer.links">Links</div>
+      <ul class="footer-links">
+        <li><a href="field-notes.html" data-i18n="footer.blog">Blog</a></li>
+        <li><a href="publications.html" data-i18n="footer.publications">Publications</a></li>
+        <li><a href="mailto:allspark-research@xiaohongshu.com" data-i18n="footer.contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer.copyright">© 2026 AllSpark Research · Xiaohongshu Foundation Model Team</span>
+    <div class="footer-bottom-links">
+      <a href="#" data-i18n="footer.privacy">Privacy</a>
+      <a href="#" data-i18n="footer.terms">Terms</a>
+      <a href="#" data-i18n="footer.sitemap">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<script src="constellation-viz.js"></script>
+<script src="i18n.js?v=1792631698000"></script>
+<script src="main.js?v=1787295424726"></script>
+<script src="logos.js?v=1787644916116"></script>
+</body>
+</html>

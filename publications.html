@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="pubs.title.head">Publications — AllSpark Research</title>
+  <link rel="stylesheet" href="style.css?v=1787644916116" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1787295424726" />
+  <style>
+    .pub-header {
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: calc(var(--nav-h) + 72px) 48px 0;
+    }
+    .page-title {
+      font-size: clamp(44px, 5vw, 68px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 40px;
+    }
+    /* OpenAI-style text tabs */
+    .pub-tabs {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 20px;
+    }
+    .pub-tab {
+      font-size: 16px;
+      color: var(--text-muted);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: color 0.2s;
+      font-family: inherit;
+    }
+    .pub-tab:hover { color: var(--text-secondary); }
+    .pub-tab.active { color: var(--text-primary); font-weight: 500; }
+
+    .pub-body {
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: 0 48px 100px;
+    }
+
+    .pub-row {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 48px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border-color);
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.2s;
+    }
+    .pub-row:hover { opacity: 0.68; }
+    .pub-row:hover .pub-title { color: var(--accent); }
+
+    .pub-left {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .pub-type {
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+    .pub-date {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .pub-venue-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+    .pub-oral {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #E8A317;
+      text-transform: uppercase;
+    }
+
+    .pub-main {
+      max-width: 720px;
+    }
+    .pub-title {
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      transition: color 0.2s;
+    }
+    .pub-summary {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .pub-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .pub-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding: 4px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .pub-link:hover { border-color: var(--accent); color: var(--accent); }
+    .pub-link svg { width: 12px; height: 12px; }
+
+    @media (max-width: 768px) {
+      .pub-header { padding: calc(var(--nav-h) + 40px) 24px 0; }
+      .pub-body { padding: 0 24px 60px; }
+      .pub-tabs { gap: 20px; overflow-x: auto; }
+      .pub-tab { font-size: 14px; white-space: nowrap; }
+      .pub-row { grid-template-columns: 1fr; gap: 12px; }
+      .pub-left { flex-direction: row; align-items: center; gap: 12px; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <span class="brand-logo nav-logo-svg"></span>
+    <span class="brand-wordmark"></span>
+    <span class="brand-suffix">Research</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="field-notes.html" data-i18n="nav.blog">Blog</a></li>
+    <li><a href="publications.html" class="active" data-i18n="nav.publications">Publications</a></li>
+    <li><a href="about.html#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="theme-toggle">Light</button>
+    <div class="nav-lang" id="lang-toggle"><span class="en active">EN</span> / <span class="zh">中文</span></div>
+    <button class="btn-primary" style="padding: 8px 18px; font-size: 13px;" data-i18n="nav.subscribe">Subscribe</button>
+  </div>
+</nav>
+
+<main>
+  <div class="pub-header">
+    <h1 class="page-title" data-i18n="pubs.title">Publications</h1>
+    <div class="pub-tabs">
+      <button class="pub-tab active" data-filter="all" data-i18n="pubs.tab.all">All</button>
+    </div>
+  </div>
+
+  <div class="pub-body">
+
+    <!-- 2026 -->
+    <a class="pub-row" data-type="preprint" data-sort="20261010" href="https://arxiv.org/abs/2610.14709" target="_blank" rel="noopener">
+      <div class="pub-left">
+        <span class="pub-type" data-i18n="pubs.type.preprint">Preprint</span>
+        <span class="pub-date">Oct 2026</span>
+        <span class="pub-venue-tag">arXiv:2610.14709</span>
+      </div>
+      <div class="pub-main">
+        <div class="pub-title">Vela: User Behavior as Supervision Sparks LLM Intelligence</div>
+        <div class="pub-summary" data-i18n="pubs.sum1">Turns anonymized real user behavior records into trainable tasks and trajectories, showing that long-term behavior data is a scalable supervision source for both user-centered and general LLM capabilities.</div>
+        <div class="pub-links">
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF</span>
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>arXiv</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="pub-row" data-type="preprint" data-sort="20261008" href="https://arxiv.org/abs/2610.11354" target="_blank" rel="noopener">
+      <div class="pub-left">
+        <span class="pub-type" data-i18n="pubs.type.preprint">Preprint</span>
+        <span class="pub-date">Oct 2026</span>
+        <span class="pub-venue-tag">arXiv:2610.11354</span>
+      </div>
+      <div class="pub-main">
+        <div class="pub-title">AdaptEvo: Learning under Imperfect Supervision through Confidence-Adaptive Training with Knowledge Evolution</div>
+        <div class="pub-summary" data-i18n="pubs.sum2">Couples Confidence-Adaptive GRPO with evolving decision knowledge and process rubrics, so models learn from imperfect supervision and stay robust on rule-governed multimodal moderation even after the rules change.</div>
+        <div class="pub-links">
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF</span>
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>arXiv</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="pub-row" data-type="preprint" data-sort="20260928" href="https://arxiv.org/abs/2609.35954" target="_blank" rel="noopener">
+      <div class="pub-left">
+        <span class="pub-type" data-i18n="pubs.type.preprint">Preprint</span>
+        <span class="pub-date">Sep 2026</span>
+        <span class="pub-venue-tag">arXiv:2609.35954</span>
+      </div>
+      <div class="pub-main">
+        <div class="pub-title">ROSS: Relearning from Self-Generated Rollouts through Selective Supervision</div>
+        <div class="pub-summary" data-i18n="pubs.sum3">Keeps historical self-generated rollouts as context while applying loss only to selected continuations, extracting further gains from past experience without spending new policy rollouts.</div>
+        <div class="pub-links">
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF</span>
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>arXiv</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="pub-row" data-type="preprint" data-sort="20260927" href="https://arxiv.org/abs/2609.33772" target="_blank" rel="noopener">
+      <div class="pub-left">
+        <span class="pub-type" data-i18n="pubs.type.preprint">Preprint</span>
+        <span class="pub-date">Sep 2026</span>
+        <span class="pub-venue-tag">arXiv:2609.33772</span>
+      </div>
+      <div class="pub-main">
+        <div class="pub-title">Skill2Env: Capability-Oriented Environment Synthesis from Skills for General Agents</div>
+        <div class="pub-summary" data-i18n="pubs.sum4">Starts from a skill and lets agent capability demands drive joint synthesis of tasks and executable environments, then raises difficulty through Iterative Task Hardening guided by solver execution evidence.</div>
+        <div class="pub-links">
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF</span>
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>arXiv</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="pub-row" data-type="preprint" data-sort="20260926" href="https://arxiv.org/abs/2609.33665" target="_blank" rel="noopener">
+      <div class="pub-left">
+        <span class="pub-type" data-i18n="pubs.type.preprint">Preprint</span>
+        <span class="pub-date">Sep 2026</span>
+        <span class="pub-venue-tag">arXiv:2609.33665</span>
+      </div>
+      <div class="pub-main">
+        <div class="pub-title">CompoWorld: Compositional Environment Scaling for General Agents</div>
+        <div class="pub-summary" data-i18n="pubs.sum5">Scales agent training environments by composing a reusable service library into cross-service dependency graphs, generating and verifying tasks where information must flow between services.</div>
+        <div class="pub-links">
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF</span>
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>arXiv</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="pub-row" data-type="preprint" data-sort="20260922" href="https://arxiv.org/abs/2609.26355" target="_blank" rel="noopener">
+      <div class="pub-left">
+        <span class="pub-type" data-i18n="pubs.type.preprint">Preprint</span>
+        <span class="pub-date">Sep 2026</span>
+        <span class="pub-venue-tag">arXiv:2609.26355</span>
+      </div>
+      <div class="pub-main">
+        <div class="pub-title">PACT: From Credit Assignment to Critic Alignment</div>
+        <div class="pub-summary" data-i18n="pubs.sum6">Proves that Completeness, Prefix Consistency, and Neutrality uniquely determine token-level credit, and uses this lens to align critic training with the updated policy via an Actor-then-Critic order.</div>
+        <div class="pub-links">
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF</span>
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>arXiv</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="pub-row" data-type="preprint" data-sort="20260903" href="https://arxiv.org/abs/2609.04304" target="_blank" rel="noopener">
+      <div class="pub-left">
+        <span class="pub-type" data-i18n="pubs.type.preprint">Preprint</span>
+        <span class="pub-date">Sep 2026</span>
+        <span class="pub-venue-tag">arXiv:2609.04304</span>
+      </div>
+      <div class="pub-main">
+        <div class="pub-title">Iris: Climbing to the Search Frontier</div>
+        <div class="pub-summary" data-i18n="pubs.sum7">Trains search agents at the 35B-A3B and 397B-A17B scales on multi-hop tasks reverse-constructed from web hyperlink structure, alternating supervised and RL stages in an SFT-RL climbing procedure against live search.</div>
+        <div class="pub-links">
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF</span>
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>arXiv</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="pub-row" data-type="preprint" data-sort="20260827" href="https://arxiv.org/abs/2608.26530" target="_blank" rel="noopener">
+      <div class="pub-left">
+        <span class="pub-type" data-i18n="pubs.type.preprint">Preprint</span>
+        <span class="pub-date">Aug 2026</span>
+        <span class="pub-venue-tag">arXiv:2608.26530</span>
+      </div>
+      <div class="pub-main">
+        <div class="pub-title">PILOT in the Loop: Live Self-Improvement for Long-Horizon Agents</div>
+        <div class="pub-summary" data-i18n="pubs.sum8">A supervisor-worker harness for live self-improvement: a separate supervisor steers or aborts the active worker while emerging experience is distilled into reusable skills and persistent memory.</div>
+        <div class="pub-links">
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF</span>
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>arXiv</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="pub-row" data-type="preprint" data-sort="20260825" href="https://arxiv.org/abs/2608.24987" target="_blank" rel="noopener">
+      <div class="pub-left">
+        <span class="pub-type" data-i18n="pubs.type.preprint">Preprint</span>
+        <span class="pub-date">Aug 2026</span>
+        <span class="pub-venue-tag">arXiv:2608.24987</span>
+      </div>
+      <div class="pub-main">
+        <div class="pub-title">D³-MOPD: Dynamic Domain ScheDuling for Efficient Multi-Teacher Distillation</div>
+        <div class="pub-summary" data-i18n="pubs.sum9">Repurposes the per-domain reverse-KL signal already produced during multi-teacher on-policy distillation to reschedule the domain mixture online, closing most of the student-to-teacher gap with far fewer rollout steps.</div>
+        <div class="pub-links">
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF</span>
+          <span class="pub-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>arXiv</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<!-- ── Footer ──────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <span class="brand-logo footer-logo-svg"></span>
+        <span class="brand-wordmark"></span>
+        <span class="brand-suffix">Research</span>
+      </div>
+      <p class="footer-about" data-i18n="footer.about">
+        Xiaohongshu's foundation model research team. Building the instruments, rubrics, and feedback loops that turn real-world interactions into model evolution.
+      </p>
+      <div class="footer-social">
+        <a href="#" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer.links">Links</div>
+      <ul class="footer-links">
+        <li><a href="field-notes.html" data-i18n="footer.blog">Blog</a></li>
+        <li><a href="publications.html" data-i18n="footer.publications">Publications</a></li>
+        <li><a href="mailto:allspark-research@xiaohongshu.com" data-i18n="footer.contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer.copyright">© 2026 AllSpark Research · Xiaohongshu Foundation Model Team</span>
+    <div class="footer-bottom-links">
+      <a href="#" data-i18n="footer.privacy">Privacy</a>
+      <a href="#" data-i18n="footer.terms">Terms</a>
+      <a href="#" data-i18n="footer.sitemap">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<script src="i18n.js?v=1792631698000"></script>
+<script src="main.js?v=1787295424726"></script>
+<script src="logos.js?v=1787644916116"></script>
+</body>
+</html>

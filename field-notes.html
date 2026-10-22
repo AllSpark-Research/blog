@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="fieldnotes.title">Research Journal — AllSpark</title>
+  <link rel="stylesheet" href="style.css?v=1787644916116" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1787295424726" />
+  <style>
+    .notes-header {
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: calc(var(--nav-h) + 64px) 48px 48px;
+    }
+    .breadcrumb {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+    .breadcrumb .sep { margin: 0 8px; opacity: 0.5; }
+    .breadcrumb .current { color: var(--accent); }
+    .page-title {
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .page-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: 32px;
+    }
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-tab {
+      font-size: 13px;
+      padding: 8px 18px;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: transparent;
+    }
+    .filter-tab:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .filter-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .notes-list {
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: 0 48px 48px;
+    }
+    .note-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border-color);
+      gap: 40px;
+      transition: all 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .note-row:hover {
+      background: var(--bg-card);
+      margin: 0 -24px;
+      padding: 32px 24px;
+      border-radius: 8px;
+    }
+    .note-row:hover .note-title { color: var(--accent); }
+    .note-row-left { flex: 1; }
+    .note-row-badges {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .badge {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .badge.accent {
+      background: rgba(59, 104, 255, 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .note-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      transition: color 0.2s;
+      line-height: 1.4;
+    }
+    .note-excerpt {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .note-footer-meta {
+      display: flex;
+      gap: 16px;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .note-row-right {
+      flex-shrink: 0;
+    }
+    .note-read-time {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .notes-pagination {
+      max-width: var(--page-w);
+      margin: 0 auto;
+      padding: 48px;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .notes-header, .notes-list { padding-left: 24px; padding-right: 24px; }
+      .note-row { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ─────────────────────────────────────── -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <span class="brand-logo nav-logo-svg"></span>
+    <span class="brand-wordmark"></span>
+    <span class="brand-suffix">Research</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="field-notes.html" class="active" data-i18n="nav.blog">Blog</a></li>
+    <li><a href="publications.html" data-i18n="nav.publications">Publications</a></li>
+    <li><a href="about.html#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="theme-toggle">Light</button>
+    <div class="nav-lang" id="lang-toggle"><span class="en active">EN</span> / <span class="zh">中文</span></div>
+    <button class="btn-primary" style="padding: 8px 18px; font-size: 13px;" data-i18n="nav.subscribe">Subscribe</button>
+  </div>
+</nav>
+
+<!-- ── Header ─────────────────────────────────────────── -->
+<div class="notes-header">
+  <div class="breadcrumb">
+    <span class="current" data-i18n="fieldnotes.breadcrumb">Research Journal</span>
+  </div>
+  <h1 class="page-title" data-i18n="fieldnotes.hero.title">Research Journal</h1>
+  <p class="page-desc" data-i18n="fieldnotes.hero.desc">
+    Observations from real-world model deployments, community interactions,
+    and agentic system behavior. Field notes prioritize honesty over polish.
+  </p>
+
+  <!-- Filter Tabs -->
+  <div class="filter-tabs">
+    <div class="filter-tab active" data-filter="all" data-i18n="fieldnotes.filter.all">All</div>
+    <div class="filter-tab" data-filter="research" data-i18n="fieldnotes.filter.research">Research</div>
+    <div class="filter-tab" data-filter="post-training" data-i18n="fieldnotes.filter.posttraining">Post-Training</div>
+    <div class="filter-tab" data-filter="agentic" data-i18n="fieldnotes.filter.agentic">Agentic Systems</div>
+    <div class="filter-tab" data-filter="evaluation" data-i18n="fieldnotes.filter.evaluation">Evaluation</div>
+    <div class="filter-tab" data-filter="safety" data-i18n="fieldnotes.filter.safety">Safety</div>
+    <div class="filter-tab" data-filter="engineering" data-i18n="fieldnotes.filter.engineering">Engineering</div>
+  </div>
+</div>
+
+<!-- ── Notes List ─────────────────────────────────────── -->
+<div class="notes-list">
+
+  <a href="article.html" class="note-row" data-field="all">
+    <div class="note-row-left">
+      <div class="note-row-badges">
+        <span class="badge accent" data-i18n="fieldnotes.note1.badge">Manifesto</span>
+        <span class="badge" data-i18n="fieldnotes.note1.field">All Fields</span>
+      </div>
+      <div class="note-title" data-i18n="fieldnotes.note1.title">Intelligence in the Wild</div>
+      <div class="note-excerpt" data-i18n="fieldnotes.note1.excerpt">
+        AllSpark Research studies intelligence as it unfolds beyond the lab — where models and agents
+        perceive, decide, act, and adapt in open environments. This manifesto introduces the
+        Field–Instrument–Loop framework.
+      </div>
+      <div class="note-footer-meta">
+        <span>AllSpark Research</span>
+        <span data-i18n="fieldnotes.note1.date">June 12, 2026</span>
+        <span>AS-RJ-2026-001</span>
+      </div>
+    </div>
+    <div class="note-row-right">
+      <div class="note-read-time" data-i18n="fieldnotes.note1.readtime">28 min read</div>
+    </div>
+  </a>
+
+  <a href="article.html" class="note-row" data-field="evaluation">
+    <div class="note-row-left">
+      <div class="note-row-badges">
+        <span class="badge accent" data-i18n="fieldnotes.note2.badge">Foundation Essay</span>
+        <span class="badge" data-i18n="fieldnotes.note2.field">Evaluation & Harness</span>
+      </div>
+      <div class="note-title" data-i18n="fieldnotes.note2.title">Evaluation as Infrastructure</div>
+      <div class="note-excerpt" data-i18n="fieldnotes.note2.excerpt">
+        Benchmarks do not measure capability — they reveal capability under specific conditions.
+        We describe how to build evaluation infrastructure that remains valid as models improve,
+        and why rubrics must be executable to be meaningful.
+      </div>
+      <div class="note-footer-meta">
+        <span>AllSpark Research</span>
+        <span data-i18n="fieldnotes.note2.date">May 28, 2026</span>
+        <span>AS-EVAL-2026-001</span>
+      </div>
+    </div>
+    <div class="note-row-right">
+      <div class="note-read-time" data-i18n="fieldnotes.note2.readtime">18 min read</div>
+    </div>
+  </a>
+
+  <a href="article.html" class="note-row" data-field="safety">
+    <div class="note-row-left">
+      <div class="note-row-badges">
+        <span class="badge accent" data-i18n="fieldnotes.note3.badge">Research Article</span>
+        <span class="badge" data-i18n="fieldnotes.note3.field">Post-Training</span>
+      </div>
+      <div class="note-title" data-i18n="fieldnotes.note3.title">When Moderation Becomes Reasoning</div>
+      <div class="note-excerpt" data-i18n="fieldnotes.note3.excerpt">
+        We observed that production content moderation fails in ways that look nothing like
+        benchmark failure. The model's underlying problem is not classification — it is
+        rule-grounded inference under ambiguity. We formalize this and describe our approach.
+      </div>
+      <div class="note-footer-meta">
+        <span>AllSpark Research</span>
+        <span data-i18n="fieldnotes.note3.date">May 10, 2026</span>
+        <span>AS-PT-2026-001</span>
+      </div>
+    </div>
+    <div class="note-row-right">
+      <div class="note-read-time" data-i18n="fieldnotes.note3.readtime">22 min read</div>
+    </div>
+  </a>
+
+  <a href="article.html" class="note-row" data-field="agentic">
+    <div class="note-row-left">
+      <div class="note-row-badges">
+        <span class="badge accent" data-i18n="fieldnotes.note4.badge">Field Note</span>
+        <span class="badge" data-i18n="fieldnotes.note4.field">Agentic Systems</span>
+      </div>
+      <div class="note-title" data-i18n="fieldnotes.note4.title">Auditing Long-Horizon Tool Use</div>
+      <div class="note-excerpt" data-i18n="fieldnotes.note4.excerpt">
+        When agents operate over extended horizons, tool-use failures compound in non-obvious ways.
+        We describe our audit methodology, three failure archetypes we identified, and the changes
+        we made to our runtime as a result.
+      </div>
+      <div class="note-footer-meta">
+        <span>AllSpark Research</span>
+        <span data-i18n="fieldnotes.note4.date">Apr 18, 2026</span>
+        <span>AS-AGENT-2026-002</span>
+      </div>
+    </div>
+    <div class="note-row-right">
+      <div class="note-read-time" data-i18n="fieldnotes.note4.readtime">14 min read</div>
+    </div>
+  </a>
+
+  <a href="article.html" class="note-row" data-field="engineering">
+    <div class="note-row-left">
+      <div class="note-row-badges">
+        <span class="badge accent" data-i18n="fieldnotes.note5.badge">System Note</span>
+        <span class="badge" data-i18n="fieldnotes.note5.field">Engineering Systems</span>
+      </div>
+      <div class="note-title" data-i18n="fieldnotes.note5.title">Harnesses as Scientific Instruments</div>
+      <div class="note-excerpt" data-i18n="fieldnotes.note5.excerpt">
+        A harness is not a test runner. It is a scientific instrument — one that must be
+        calibrated, versioned, and validated independently of the models it evaluates.
+        We describe our harness architecture and the lessons from two years of production use.
+      </div>
+      <div class="note-footer-meta">
+        <span>AllSpark Research</span>
+        <span data-i18n="fieldnotes.note5.date">Apr 2, 2026</span>
+        <span>AS-ENG-2026-001</span>
+      </div>
+    </div>
+    <div class="note-row-right">
+      <div class="note-read-time" data-i18n="fieldnotes.note5.readtime">16 min read</div>
+    </div>
+  </a>
+
+  <a href="article.html" class="note-row" data-field="agentic">
+    <div class="note-row-left">
+      <div class="note-row-badges">
+        <span class="badge accent" data-i18n="fieldnotes.note6.badge">Research Article</span>
+        <span class="badge" data-i18n="fieldnotes.note6.field">Agentic Systems</span>
+      </div>
+      <div class="note-title" data-i18n="fieldnotes.note6.title">Multi-Agent Coordination in Logistics</div>
+      <div class="note-excerpt" data-i18n="fieldnotes.note6.excerpt">
+        Real multi-agent systems fail at coordination boundaries: handoffs, shared state,
+        and conflicting sub-goals. We describe a field study in a logistics domain and the
+        coordination primitives we developed in response.
+      </div>
+      <div class="note-footer-meta">
+        <span>AllSpark Research</span>
+        <span data-i18n="fieldnotes.note6.date">Mar 14, 2026</span>
+        <span>AS-AGENT-2026-001</span>
+      </div>
+    </div>
+    <div class="note-row-right">
+      <div class="note-read-time" data-i18n="fieldnotes.note6.readtime">20 min read</div>
+    </div>
+  </a>
+
+  <a href="article.html" class="note-row" data-field="research">
+    <div class="note-row-left">
+      <div class="note-row-badges">
+        <span class="badge accent" data-i18n="fieldnotes.note7.badge">Research Article</span>
+        <span class="badge" data-i18n="fieldnotes.note7.field">Foundation Models</span>
+      </div>
+      <div class="note-title" data-i18n="fieldnotes.note7.title">User Understanding Beyond Click Signals</div>
+      <div class="note-excerpt" data-i18n="fieldnotes.note7.excerpt">
+        Click-through rate is a proxy for engagement, not a measure of user understanding.
+        We describe how we formulate user preference modeling as a multimodal inference problem
+        and the evaluation framework we built to measure it without reducing it to clicks.
+      </div>
+      <div class="note-footer-meta">
+        <span>AllSpark Research</span>
+        <span data-i18n="fieldnotes.note7.date">Feb 28, 2026</span>
+        <span>AS-RJ-2026-003</span>
+      </div>
+    </div>
+    <div class="note-row-right">
+      <div class="note-read-time" data-i18n="fieldnotes.note7.readtime">19 min read</div>
+    </div>
+  </a>
+
+  <a href="article.html" class="note-row" data-field="evaluation">
+    <div class="note-row-left">
+      <div class="note-row-badges">
+        <span class="badge accent" data-i18n="fieldnotes.note8.badge">System Note</span>
+        <span class="badge" data-i18n="fieldnotes.note8.field">Evaluation & Harness</span>
+      </div>
+      <div class="note-title" data-i18n="fieldnotes.note8.title">AllSpark Eval Suite v0.2</div>
+      <div class="note-excerpt" data-i18n="fieldnotes.note8.excerpt">
+        Release notes for Eval Suite v0.2. New: multi-turn evaluation harness, LLM Judge
+        calibration toolkit, rubric regression detection, and a shared benchmark registry.
+        Known limitations and future directions included.
+      </div>
+      <div class="note-footer-meta">
+        <span>AllSpark Research</span>
+        <span data-i18n="fieldnotes.note8.date">Feb 10, 2026</span>
+        <span>AS-EVAL-2026-002</span>
+      </div>
+    </div>
+    <div class="note-row-right">
+      <div class="note-read-time" data-i18n="fieldnotes.note8.readtime">8 min read</div>
+    </div>
+  </a>
+
+</div>
+
+<!-- Pagination hint -->
+<div class="notes-pagination">
+  <span style="font-size:13px;color:var(--text-muted);" data-i18n="fieldnotes.pagination.showing">Showing 8 of 45 essays</span>
+  <div style="margin-top:16px;">
+    <a href="#" style="font-size:13.5px;color:var(--accent);" data-i18n="fieldnotes.pagination.load">Load more →</a>
+  </div>
+</div>
+
+<!-- ── Footer ──────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <span class="brand-logo footer-logo-svg"></span>
+        <span class="brand-wordmark"></span>
+        <span class="brand-suffix">Research</span>
+      </div>
+      <p class="footer-about" data-i18n="footer.about">
+        Xiaohongshu's foundation model research team. Building the instruments, rubrics, and feedback loops that turn real-world interactions into model evolution.
+      </p>
+      <div class="footer-social">
+        <a href="#" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer.links">Links</div>
+      <ul class="footer-links">
+        <li><a href="field-notes.html" data-i18n="footer.blog">Blog</a></li>
+        <li><a href="publications.html" data-i18n="footer.publications">Publications</a></li>
+        <li><a href="mailto:allspark-research@xiaohongshu.com" data-i18n="footer.contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer.copyright">© 2026 AllSpark Research · Xiaohongshu Foundation Model Team</span>
+    <div class="footer-bottom-links">
+      <a href="#" data-i18n="footer.privacy">Privacy</a>
+      <a href="#" data-i18n="footer.terms">Terms</a>
+      <a href="#" data-i18n="footer.sitemap">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<script src="constellation-viz.js"></script>
+<script src="i18n.js?v=1792631698000"></script>
+<script src="main.js?v=1787295424726"></script>
+<script src="logos.js?v=1787644916116"></script>
+</body>
+</html>
